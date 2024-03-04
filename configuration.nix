@@ -38,6 +38,7 @@
         "Videos"
         "Dev"
         "nixos-config"
+        ".local/share/fish"
         { directory = ".ssh"; mode = "0700"; }
         { directory = ".local/share/keyrings"; mode = "0700"; }
       ];
