@@ -66,6 +66,16 @@
     };
   };
 
+  dconf = {
+    enable = true;
+    settings = {
+      "org/gnome/desktop/interface" = {
+        gtk-theme = "rose-pine-gtk";
+        color-scheme = "prefer-dark";
+      };
+    };
+  };
+
   programs.swaylock = {
     enable = true;
     package = pkgs.swaylock-effects;
