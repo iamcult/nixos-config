@@ -90,6 +90,8 @@
       set fish_greeting # Disable greeting
       alias nixos-version="nix profile history --profile /nix/var/nix/profiles/system | tail -2 | grep Version | rev | cut -c 20- | rev"
       alias rebuild-os="doas nixos-rebuild switch --flake ~/nixos-config#thing && pushd ~/nixos-config; git commit -a; popd"
+      alias clear="clear && pfetch"
+      pfetch
       starship init fish | source 
     '';
   };
@@ -105,6 +107,7 @@
     slurp
     wl-clipboard
     swaybg
+    pfetch
   ];
 
   home.stateVersion = "23.11";
