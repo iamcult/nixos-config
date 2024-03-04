@@ -70,9 +70,16 @@
     enable = true;
     settings = {
       "org/gnome/desktop/interface" = {
-        gtk-theme = "rose-pine-gtk";
         color-scheme = "prefer-dark";
       };
+    };
+  };
+
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Rose-Pine";
+      package = pkgs.rose-pine-gtk-theme;
     };
   };
 
@@ -118,7 +125,6 @@
     wl-clipboard
     swaybg
     pfetch
-    rose-pine-gtk-theme
   ];
 
   home.stateVersion = "23.11";
