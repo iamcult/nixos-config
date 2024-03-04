@@ -1,0 +1,111 @@
+# Edit this configuration file to define what should be installed on
+# your system. Help is available in the configuration.nix(5) man page, on
+# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
+
+{ config, lib, pkgs, ... }:
+
+{
+  imports =
+    [ # Include the results of the hardware scan.
+      ./hardware-configuration.nix
+    ];
+
+  # Use the systemd-boot EFI boot loader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
+  boot.supportedFilesystems = [ "zfs" ];
+  boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
+  networking.hostId = "e5a29261";
+
+  hardware.opengl.enable = true;
+
+  environment.persistence."/persist" = {
+    hideMounts = true;
+    files = [
+      "/etc/machine-id"
+    ];
+    directories = [
+      "/var/log"
+      "/etc/NetworkManager/system-connections"
+    ];
+    users.cult = {
+      directories = [
+        "Downloads"
+        "Music"
+        "Pictures"
+        "Documents"
+        "Videos"
+        "Dev"
+        "nixos-config"
+        { directory = ".ssh"; mode = "0700"; }
+        { directory = ".local/share/keyrings"; mode = "0700"; }
+      ];
+    };
+  };
+
+  zramSwap.enable = true;
+
+  networking.hostName = "thing"; # Define your hostname.
+  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+
+  time.timeZone = "America/New_York";
+
+  age.secrets.password.file = ./secrets/password.age;
+
+  users.mutableUsers = false;
+  users.users.cult = {
+    isNormalUser = true;
+    shell = pkgs.fish;
+    extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
+    hashedPasswordFile = config.age.secrets.password.path;
+  };
+  programs.fish.enable = true;
+
+  programs.sway.enable = true;
+  security.pam.loginLimits = [
+    { domain = "@users"; item = "rtprio"; type = "-"; value = 1; }
+  ];
+
+  security.doas.enable = true;
+  security.sudo.enable = false;
+  security.doas.extraRules = [{
+  groups = ["wheel"];
+    keepEnv = true;  # Optional, retains environment variables while running commands
+    persist = true;  # Optional, only require password verification a single time
+  }];
+
+  environment.systemPackages = with pkgs; [
+    git
+  ];
+
+  fonts.packages = with pkgs; [
+    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+  ];
+
+  services.xserver = {
+    enable = true;
+    displayManager.sddm.enable = true;
+  };
+
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    pulse.enable = true;
+  };
+
+  services.dbus.enable = true;
+
+  security.polkit.enable = true;
+
+  nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
+
+  services.openssh.enable = true;
+  system.stateVersion = "24.05"; # Did you read the comment?
+}
+
