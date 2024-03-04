@@ -20,6 +20,9 @@
       output.eDP-1 = {
         scale = "1.5";
       };
+      input."2362:628:PIXA3854:00_093A:0274_Touchpad" = {
+        natural_scroll = "enabled";
+      };
       modifier = "Mod4";
       terminal = "foot";
       menu = "bemenu-run";
