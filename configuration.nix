@@ -40,6 +40,7 @@
         "Dev"
         "nixos-config"
         ".config/dconf"
+        ".config/vesktop"
         ".librewolf"
         ".local/share/fish"
         { directory = ".ssh"; mode = "0700"; }
