@@ -108,6 +108,7 @@
     wl-clipboard
     swaybg
     pfetch
+    rose-pine-gtk-theme
   ];
 
   home.stateVersion = "23.11";
