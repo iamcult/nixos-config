@@ -39,6 +39,7 @@
         "Videos"
         "Dev"
         "nixos-config"
+        ".config/dconf"
         ".local/share/fish"
         { directory = ".ssh"; mode = "0700"; }
         { directory = ".local/share/keyrings"; mode = "0700"; }
@@ -65,11 +66,7 @@
     hashedPasswordFile = config.age.secrets.password.path;
   };
   programs.fish.enable = true;
-
-  programs.sway.enable = true;
-  security.pam.loginLimits = [
-    { domain = "@users"; item = "rtprio"; type = "-"; value = 1; }
-  ];
+  programs.dconf.enable = true;
 
   security.doas.enable = true;
   security.sudo.enable = false;
@@ -83,24 +80,38 @@
     git
   ];
 
+  environment.gnome.excludePackages = (with pkgs; [
+    gnome-tour
+  ]) ++ (with pkgs.gnome; [
+    gnome-music
+    epiphany # web browser
+    geary # email reader
+    gnome-characters
+    totem # video player
+    yelp
+    gnome-contacts
+    gnome-calendar
+    file-roller
+    simple-scan
+    gnome-shell-extensions
+  ]);
+
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" ]; })
   ];
 
   services.xserver = {
     enable = true;
-    displayManager.sddm.enable = true;
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
   };
 
+  hardware.pulseaudio.enable = false;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     pulse.enable = true;
   };
-
-  services.dbus.enable = true;
-
-  security.polkit.enable = true;
 
   nix = {
     package = pkgs.nixFlakes;
