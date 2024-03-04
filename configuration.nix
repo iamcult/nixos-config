@@ -41,7 +41,7 @@
         "nixos-config"
         ".config/dconf"
         ".config/vesktop"
-        ".librewolf"
+        ".mozilla"
         ".local/share/fish"
         ".local/share/gnome-shell"
         { directory = ".ssh"; mode = "0700"; }

@@ -30,7 +30,7 @@
   };
 
   home.packages = with pkgs; [
-    librewolf-unwrapped
+    firefox
     pfetch
     gnome-extension-manager
     blackbox-terminal
