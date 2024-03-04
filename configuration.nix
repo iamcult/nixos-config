@@ -27,6 +27,7 @@
     ];
     directories = [
       "/var/log"
+      "/var/lib/fprint"
       "/etc/NetworkManager/system-connections"
     ];
     users.cult = {
@@ -53,6 +54,8 @@
   time.timeZone = "America/New_York";
 
   age.secrets.password.file = ./secrets/password.age;
+
+  services.fprintd.enable = true;
 
   users.mutableUsers = false;
   users.users.cult = {
