@@ -32,6 +32,9 @@
   home.packages = with pkgs; [
     librewolf
     pfetch
+    gnome-extension-manager
+    blackbox-terminal
+    vesktop
   ];
 
   home.stateVersion = "23.11";
