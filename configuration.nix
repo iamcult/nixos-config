@@ -43,6 +43,7 @@
         ".config/vesktop"
         ".librewolf"
         ".local/share/fish"
+        ".local/share/gnome-shell"
         { directory = ".ssh"; mode = "0700"; }
         { directory = ".local/share/keyrings"; mode = "0700"; }
       ];
