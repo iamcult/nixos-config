@@ -30,6 +30,7 @@
       "/var/lib/bluetooth"
       "/var/lib/fprint"
       "/etc/NetworkManager/system-connections"
+      "/etc/secureboot"
     ];
     users.cult = {
       directories = [
