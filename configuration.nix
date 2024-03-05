@@ -11,7 +11,11 @@
     ];
 
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.enable = false;
+  boot.lanzaboote = {
+    enable = true;
+    pkiBundle = "/etc/secureboot";
+  };
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.supportedFilesystems = [ "zfs" ];
@@ -86,6 +90,7 @@
 
   environment.systemPackages = with pkgs; [
     git
+    sbctl
   ];
 
   environment.gnome.excludePackages = (with pkgs; [

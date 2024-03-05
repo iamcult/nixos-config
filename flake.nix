@@ -25,23 +25,6 @@
           ./configuration.nix
           impermanence.nixosModules.impermanence
 	  lanzaboote.nixosModules.lanzaboote
-	  ({ pkgs, lib, ... }: {
-            environment.systemPackages = [
-              # For debugging and troubleshooting Secure Boot.
-              pkgs.sbctl
-            ];
-
-            # Lanzaboote currently replaces the systemd-boot module.
-            # This setting is usually set to true in configuration.nix
-            # generated at installation time. So we force it to false
-            # for now.
-            boot.loader.systemd-boot.enable = lib.mkForce false;
-
-            boot.lanzaboote = {
-              enable = true;
-              pkiBundle = "/etc/secureboot";
-            };
-          })
           agenix.nixosModules.default
           {
             environment.systemPackages = [ agenix.packages.x86_64-linux.default ];
