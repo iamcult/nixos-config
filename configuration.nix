@@ -60,6 +60,8 @@
   age.secrets.password.file = ./secrets/password.age;
 
   services.fprintd.enable = true;
+  security.pam.services.login.fprintAuth = false;
+  security.pam.services.gdm-fingerprint.fprintAuth = true;
 
   users.mutableUsers = false;
   users.users.cult = {
