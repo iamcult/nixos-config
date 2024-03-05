@@ -27,6 +27,7 @@
     ];
     directories = [
       "/var/log"
+      "/var/lib/bluetooth"
       "/var/lib/fprint"
       "/etc/NetworkManager/system-connections"
     ];
