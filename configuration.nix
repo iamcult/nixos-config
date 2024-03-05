@@ -54,6 +54,9 @@
         { directory = ".ssh"; mode = "0700"; }
         { directory = ".local/share/keyrings"; mode = "0700"; }
       ];
+      files = [
+        ".config/gtk-3.0/bookmarks"
+      ];
     };
   };
 
