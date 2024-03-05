@@ -95,6 +95,7 @@
 
   environment.gnome.excludePackages = (with pkgs; [
     gnome-tour
+    gnome-console
   ]) ++ (with pkgs.gnome; [
     gnome-music
     epiphany # web browser
@@ -106,7 +107,6 @@
     gnome-calendar
     file-roller
     simple-scan
-    gnome-shell-extensions
   ]);
 
   fonts.packages = with pkgs; [
