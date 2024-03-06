@@ -36,7 +36,8 @@
     gnome-extension-manager
     blackbox-terminal
     vesktop
-    lapce
+    vscode
+    vscode-extensions.rust-lang.rust-analyzer
   ];
 
   home.stateVersion = "23.11";

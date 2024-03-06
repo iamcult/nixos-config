@@ -21,8 +21,8 @@
   boot.supportedFilesystems = [ "zfs" ];
   boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
   networking.hostId = "e5a29261";
-
-  hardware.opengl.enable = true;
+  
+  nixpkgs.config.allowUnfree = true;
 
   environment.persistence."/persist" = {
     hideMounts = true;
@@ -47,6 +47,7 @@
         "nixos-config"
         ".config/dconf"
         ".config/vesktop"
+        ".config/Code"
         ".mozilla"
         ".local/share/fish"
         ".local/share/gnome-shell"
