@@ -36,6 +36,7 @@
     gnome-extension-manager
     blackbox-terminal
     vesktop
+    lapce
   ];
 
   home.stateVersion = "23.11";
