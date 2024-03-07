@@ -43,6 +43,12 @@
       options = [ "zfsutil" ];
       neededForBoot = true;
     };
+  
+  fileSystems."/home" =
+    { device = "rpool/safe/home";
+      fsType = "zfs";
+      options = [ "zfsutil" ];
+    };
 
   swapDevices = [ ];
 

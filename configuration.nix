@@ -36,29 +36,6 @@
       "/etc/NetworkManager/system-connections"
       "/etc/secureboot"
     ];
-    users.cult = {
-      directories = [
-        "Downloads"
-        "Music"
-        "Pictures"
-        "Documents"
-        "Videos"
-        "Dev"
-        "nixos-config"
-        ".config/dconf"
-        ".config/vesktop"
-        ".config/Code"
-        ".mozilla"
-        ".local/share/fish"
-        ".local/share/gnome-shell"
-        ".local/share/backgrounds"
-        { directory = ".ssh"; mode = "0700"; }
-        { directory = ".local/share/keyrings"; mode = "0700"; }
-      ];
-      files = [
-        ".config/gtk-3.0/bookmarks"
-      ];
-    };
   };
 
   zramSwap.enable = true;
