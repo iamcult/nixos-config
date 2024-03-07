@@ -39,6 +39,7 @@
     vesktop
     vscode
     vscode-extensions.rust-lang.rust-analyzer
+    nix-index
   ];
 
   home.stateVersion = "23.11";
