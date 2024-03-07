@@ -4,6 +4,10 @@
   home.username = "cult";
   home.homeDirectory = "/home/cult";
 
+  programs.neovim = {
+    enable = true;
+  };
+
   programs.git = {
     enable = true;
     userName = "iamcult";
@@ -37,8 +41,6 @@
     gnome-extension-manager
     blackbox-terminal
     vesktop
-    vscode
-    vscode-extensions.rust-lang.rust-analyzer
     nix-index
   ];
 
